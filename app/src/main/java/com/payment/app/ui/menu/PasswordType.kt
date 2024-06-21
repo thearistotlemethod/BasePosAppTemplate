@@ -1,0 +1,5 @@
+package com.payment.app.ui.menu
+
+enum class PasswordType {
+    NO_PASSWORD, ADMIN_PASSWORD, VOID_PASSWORD, REFUND_PASSWORD, REPORT_PASSWORD, SETTLEMENT_PASSWORD
+}

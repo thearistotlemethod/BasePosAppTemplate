@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">BasePaymentApp</string>
+
+    <string name="menu_merchant">Merchant Menu</string>
+    <string name="menu_trans">Transaction Menu</string>
+    <string name="menu_service">Service Menu</string>
+
+    <string name="menu_parameters">Download Parameters</string>
+    <string name="menu_settlement">Settlement</string>
+    <string name="menu_subreport">Current Report</string>
+    <string name="menu_reprint">Re-Print</string>
+    <string name="menu_printlasttrn">Latest Transaction</string>
+    <string name="menu_printlastsettlement">Latest Settlement</string>
+
+    <string name="menu_sale">Sale</string>
+    <string name="menu_void">Void</string>
+    <string name="menu_refund">Refund</string>
+
+    <string name="menu_removebatch">Remove Batch</string>
+    <string name="menu_removereversal">Remove Reversal</string>
+    <string name="menu_removeparameters">Remove Parameters</string>
+</resources>
