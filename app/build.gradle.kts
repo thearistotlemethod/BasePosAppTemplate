@@ -29,6 +29,16 @@ android {
         }
     }
 
+    flavorDimensions += "version"
+    productFlavors {
+        create("mock") {
+        }
+        create("host") {
+            buildConfigField("String","HOST_IP","\"192.168.1.21\"")
+            buildConfigField("String","HOST_PORT","\"13131\"")
+        }
+    }
+
     buildFeatures {
         dataBinding = true
         buildConfig = true

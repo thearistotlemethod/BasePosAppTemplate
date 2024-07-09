@@ -77,9 +77,9 @@ class MsgProcess @Inject constructor(
                             state.tranData.ReplyDescription =  "Yanıt Yok"
                         }
                         if (!(state.tranData.emvOnlineFlow && state.tranData.unableToGoOnline)) {
+                            mainViewModel.showMessage(state.tranData.ReplyDescription, 2000)
                             if (!(state.tranData.MsgTypeId == 220 || state.tranData.MsgTypeId == 120 || state.tranData.MsgTypeId == 800))
                                 printProcess.printTran()
-                            mainViewModel.showMessage(state.tranData.ReplyDescription, 2000)
                         }
                     }
                     rv = -999

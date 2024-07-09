@@ -51,7 +51,7 @@ class MockBankServiceImpl @Inject constructor(
         isoMsg.addField("32", tlvMessage.getField("32"))
         isoMsg.addField("35", tlvMessage.getField("35"))
         isoMsg.addField("37", "123456789012")
-        isoMsg.addField("38", "123456789012")
+        isoMsg.addField("38", "123456")
         isoMsg.addField("39", "00")
         isoMsg.addField("41", tlvMessage.getField("41"))
         isoMsg.addField("42", tlvMessage.getField("42"))

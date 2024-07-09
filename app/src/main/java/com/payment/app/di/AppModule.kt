@@ -1,5 +1,6 @@
 package com.payment.app.di
 
+import com.payment.app.BuildConfig
 import com.payment.app.core.State
 import com.payment.app.data.local.db.AppDatabase
 import com.payment.app.data.local.db.DatabaseServiceImpl
@@ -36,7 +37,10 @@ internal class AppModule {
     @Singleton
     @Provides
     fun provideBankService(state: State, commService: CommService, databaseService: DatabaseService): BankService {
-        return MockBankServiceImpl(commService, databaseService, state)
+        if(BuildConfig.FLAVOR == "host")
+            return BankServiceImpl(commService, databaseService, state)
+        else
+            return MockBankServiceImpl(commService, databaseService, state)
     }
 
     @Singleton

@@ -2,6 +2,7 @@ package com.payment.app.core
 
 import android.content.Context
 import android.util.Log
+import com.payment.app.BuildConfig
 import com.payment.app.data.local.db.DatabaseService
 import com.payment.app.data.remote.BankService
 import com.payment.app.utils.CommonUtils
@@ -36,8 +37,10 @@ class ParameterProcess @Inject constructor(
 
         databaseService.saveObject(databaseService.prmConst)
 
-        databaseService.prmComm.hostIp = "127.0.0.1"
-        databaseService.prmComm.hostPort = 13131
+        if(BuildConfig.FLAVOR == "host"){
+            databaseService.prmComm.hostIp = BuildConfig.HOST_IP
+            databaseService.prmComm.hostPort = BuildConfig.HOST_PORT.toInt()
+        }
 
         databaseService.saveObject(databaseService.prmComm)
 

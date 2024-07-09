@@ -82,7 +82,7 @@ open class ISO8583Message (private val databaseService: DatabaseService): IMessa
 
         Log.d(TAG, "Response : " + resp.toHexString())
         var isoData = resp.copyOfRange(21, resp.size)
-        if (resp[4].toInt() != 0) {
+        if (resp[2].toInt() != 0) {
             isoData = decryptMsg(isoData, 0, isoData.size)
         }
         Log.d(TAG, "ISO : " + isoData.toHexString())
@@ -98,8 +98,15 @@ open class ISO8583Message (private val databaseService: DatabaseService): IMessa
         for (o in pb.indexes){
             repo.set(o.toString(), when(o){
                 2,32,35 -> {
-                    val l = "%02X".format(isoData.get(idx)).toInt()
+                    var l = "%02X".format(isoData.get(idx)).toInt()
                     idx++
+
+                    if (l%2 != 0) {
+                        l = l/2 + 1
+                    } else {
+                        l = l / 2
+                    }
+
                     val v = isoData.copyOfRange(idx, idx + l).toHexString()
                     idx += l
                     v
@@ -165,8 +172,15 @@ open class ISO8583Message (private val databaseService: DatabaseService): IMessa
                     v
                 }
                 48,55,62,63 -> {
-                    val l = "%02X%02X".format(isoData.get(idx), isoData.get(idx + 1)).toInt()
+                    var l = "%02X%02X".format(isoData.get(idx), isoData.get(idx + 1)).toInt()
                     idx+=2
+
+                    if (l%2 != 0) {
+                        l = l/2 + 1
+                    } else {
+                        l = l / 2
+                    }
+
                     val v = isoData.copyOfRange(idx, idx + l).toHexString()
                     idx += l
                     v

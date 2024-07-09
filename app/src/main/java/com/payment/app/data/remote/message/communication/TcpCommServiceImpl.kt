@@ -33,6 +33,13 @@ class TcpCommServiceImpl @Inject constructor(
         state.tranData.unableToGoOnline = false;
 
         inputStream!!.skip(inputStream!!.available().toLong())
+
+        // make it slow
+//        msg.asList().chunked(4).forEach {
+//            outputStream!!.write(it.toByteArray())
+//            Thread.sleep(1000)
+//        }
+
         outputStream!!.write(msg)
         outputStream!!.flush()
 
